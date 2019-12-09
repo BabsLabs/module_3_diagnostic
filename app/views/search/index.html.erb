@@ -1,9 +1,8 @@
-<h1 id='house_member_count'>Members: <%= @order_members.count %></h1>
-
-<% @order_members.each do |member| %>
-    <ul class=member>
-      <h4 class='name'><%= member[:name] %></h4>
-      <p class='role'><%= member[:role] %></p>
-      <p class='house'><%= member[:house] %></p>
-    </ul>
+<h2 id='house_member_count'><%= search_results.member_count %> Results</h2>
+<% search_results.members.each do |character| %>
+  <ul class="character">
+    <h4 class="name"><%= character.name %></h4>
+    <p class="role"><%= character.role %></p>
+    <p class="house"><%= character.house %></p>
+  </ul>
 <% end %>
