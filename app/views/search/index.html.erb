@@ -1,0 +1,9 @@
+<h1 id='house_member_count'>Members: <%= @order_members.count %></h1>
+
+<% @order_members.each do |member| %>
+    <ul class=member>
+      <h4 class='name'><%= member[:name] %></h4>
+      <p class='role'><%= member[:role] %></p>
+      <p class='house'><%= member[:house] %></p>
+    </ul>
+<% end %>
