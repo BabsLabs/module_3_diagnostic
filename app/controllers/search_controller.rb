@@ -19,7 +19,15 @@ class SearchController < ApplicationController
       req.params['house'] = house
     end
 
-    @members = JSON.parse(response.body, symbolize_names: true)
+    members = JSON.parse(response.body, symbolize_names: true)
+
+    @order_members = []
+    members.each do |member|
+      if member[:orderOfThePhoenix]
+        @order_members << member
+      end
+      @order_members
+    end
   end
 
 end
