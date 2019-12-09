@@ -12,11 +12,11 @@ describe "user can search for members of a house" do
 
     within '#house_member_count' do
       expect(page).to have_content('21')
-    end 
+    end
 
     expect(page).to have_css('.member', count: 21)
 
-    within(first.('.member')) do
+    within(first('.member')) do
       expect(page).to have_css('.name')
       # expect(page).to have_css('.member_role')
       expect(page).to have_css('.house')
