@@ -1,8 +1,15 @@
 class SearchController < ApplicationController
 
   def index
-    house = params[:house]
-    key = '$2a$10$2eeaUn9Atva0TzqPe94FeOkfSzRZt9wr8tT3hI.5..qXVMiJqjOKq'
+    render locals: {
+      search_results: PotterHouseSearch.new(params[:house])
+    }
+
+
+
+
+    # house = params[:house]
+    # key = ENV['POTTER_API_KEY']
 
     # I COULD NOT GET THE CONNECTION OBJECT TO WORK AND SPENT WAY TOO LONG TRYING!
     # conn = Faraday.new(url: "https://www.potterapi.com/") do |faraday|
@@ -14,20 +21,14 @@ class SearchController < ApplicationController
     #
     # binding.pry
 
-    response = Faraday.get "https://www.potterapi.com/v1/characters" do |req|
-      req.params['key'] = key
-      req.params['house'] = house
-    end
-
-    members = JSON.parse(response.body, symbolize_names: true)
-
-    @order_members = []
-    members.each do |member|
-      if member[:orderOfThePhoenix]
-        @order_members << member
-      end
-      @order_members
-    end
+    # response = Faraday.get "https://www.potterapi.com/v1/characters" do |req|
+    #   req.params['key'] = key
+    #   req.params['house'] = house
+    # end
+    #
+    # members = JSON.parse(response.body, symbolize_names: true)
+    #
+    # @order_members = members.find_all {|member| member[:orderOfThePhoenix]}
   end
 
 end
