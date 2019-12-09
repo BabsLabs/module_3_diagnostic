@@ -14,9 +14,9 @@ describe "user can search for members of a house" do
       expect(page).to have_content('21')
     end
 
-    expect(page).to have_css('.member', count: 21)
+    expect(page).to have_css('.character', count: 21)
 
-    within(first('.member')) do
+    within(first('.character')) do
       expect(page).to have_css('.name')
       # expect(page).to have_css('.member_role')
       expect(page).to have_css('.house')
